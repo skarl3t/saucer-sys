@@ -1,0 +1,11 @@
+[package]
+name = "saucer-sys"
+description = "Raw FFI interface for saucer, the C++ webview library."
+version = "8.0.0"
+edition = "2024"
+license = "MIT"
+
+[build-dependencies]
+bindgen = "0.72.1"
+cmake = "0.1.57"
+pkg-config = "0.3.32"
