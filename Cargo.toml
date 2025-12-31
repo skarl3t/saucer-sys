@@ -9,3 +9,10 @@ license = "MIT"
 bindgen = "0.72.1"
 cmake = "0.1.57"
 pkg-config = "0.3.32"
+build-target = "0.8.0"
+
+[features]
+gen-bindings = []
+qt = []
+shared-lib = []
+lto = []
