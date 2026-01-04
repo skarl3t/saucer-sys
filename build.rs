@@ -13,28 +13,6 @@ fn main() {
     let is_qt = std::env::var("CARGO_FEATURE_QT").is_ok();
     let lto = std::env::var("CARGO_FEATURE_LTO").is_ok();
 
-    if gen_bindings {
-        let bindings = bindgen::Builder::default()
-            .header("saucer.h")
-            .clang_args([
-                "-x",
-                "c++",
-                "-I./saucer-bindings/include",
-                "-I./saucer-bindings/include/saucer", // Looks like the modules won't use a prefix
-                "-I./saucer-bindings/modules/desktop/include",
-                "-I./saucer-bindings/modules/pdf/include",
-            ])
-            .parse_callbacks(Box::new(bindgen::CargoCallbacks::new()))
-            .allowlist_item("saucer.*")
-            .prepend_enum_name(false) // Already included
-            .generate()
-            .expect("failed to generate bindings");
-
-        bindings
-            .write_to_file(out_dir.join("bindings.rs"))
-            .expect("failed to emit bindings");
-    }
-
     if os == Os::Windows {
         let Some(Env::Msvc) = build_target::target_env() else {
             panic!("MSVC is required for Windows builds");
@@ -162,6 +140,29 @@ fn main() {
 
     for lib in frameworks {
         println!("cargo::rustc-link-lib=framework={lib}");
+    }
+
+    // Must run the build first to get export.h before generating
+    if gen_bindings {
+        let bindings = bindgen::Builder::default()
+            .header("saucer.h")
+            .clang_args([
+                "-x",
+                "c++",
+                "-I./saucer-bindings/include",
+                "-I./saucer-bindings/include/saucer", // Looks like the modules won't use a prefix
+                "-I./saucer-bindings/modules/desktop/include",
+                "-I./saucer-bindings/modules/pdf/include",
+            ])
+            .parse_callbacks(Box::new(bindgen::CargoCallbacks::new()))
+            .allowlist_item("saucer.*")
+            .prepend_enum_name(false) // Already included
+            .generate()
+            .expect("failed to generate bindings");
+
+        bindings
+            .write_to_file(out_dir.join("bindings.rs"))
+            .expect("failed to emit bindings");
     }
 }
 
