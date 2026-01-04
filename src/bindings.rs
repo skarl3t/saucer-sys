@@ -15,10 +15,10 @@ pub struct saucer_application {
 pub struct saucer_application_options {
     _unused: [u8; 0],
 }
-pub const saucer_policy_SAUCER_POLICY_ALLOW: saucer_policy = 0;
-pub const saucer_policy_SAUCER_POLICY_BLOCK: saucer_policy = 1;
+pub const SAUCER_POLICY_ALLOW: saucer_policy = 0;
+pub const SAUCER_POLICY_BLOCK: saucer_policy = 1;
 pub type saucer_policy = u8;
-pub const saucer_application_event_SAUCER_APPLICATION_EVENT_QUIT: saucer_application_event = 0;
+pub const SAUCER_APPLICATION_EVENT_QUIT: saucer_application_event = 0;
 pub type saucer_application_event = ::std::os::raw::c_int;
 pub type saucer_application_event_quit = ::std::option::Option<
     unsafe extern "C" fn(arg1: *mut saucer_application, arg2: *mut ::std::os::raw::c_void) -> saucer_policy,
@@ -291,15 +291,15 @@ unsafe extern "C" {
 pub struct saucer_permission_request {
     _unused: [u8; 0],
 }
-pub const saucer_permission_type_SAUCER_PERMISSION_TYPE_UNKNOWN: saucer_permission_type = 0;
-pub const saucer_permission_type_SAUCER_PERMISSION_TYPE_AUDIO_MEDIA: saucer_permission_type = 1;
-pub const saucer_permission_type_SAUCER_PERMISSION_TYPE_VIDEO_MEDIA: saucer_permission_type = 2;
-pub const saucer_permission_type_SAUCER_PERMISSION_TYPE_DESKTOP_MEDIA: saucer_permission_type = 4;
-pub const saucer_permission_type_SAUCER_PERMISSION_TYPE_MOUSE_LOCK: saucer_permission_type = 8;
-pub const saucer_permission_type_SAUCER_PERMISSION_TYPE_DEVICE_INFO: saucer_permission_type = 16;
-pub const saucer_permission_type_SAUCER_PERMISSION_TYPE_LOCATION: saucer_permission_type = 32;
-pub const saucer_permission_type_SAUCER_PERMISSION_TYPE_CLIPBOARD: saucer_permission_type = 64;
-pub const saucer_permission_type_SAUCER_PERMISSION_TYPE_NOTIFICATION: saucer_permission_type = 128;
+pub const SAUCER_PERMISSION_TYPE_UNKNOWN: saucer_permission_type = 0;
+pub const SAUCER_PERMISSION_TYPE_AUDIO_MEDIA: saucer_permission_type = 1;
+pub const SAUCER_PERMISSION_TYPE_VIDEO_MEDIA: saucer_permission_type = 2;
+pub const SAUCER_PERMISSION_TYPE_DESKTOP_MEDIA: saucer_permission_type = 4;
+pub const SAUCER_PERMISSION_TYPE_MOUSE_LOCK: saucer_permission_type = 8;
+pub const SAUCER_PERMISSION_TYPE_DEVICE_INFO: saucer_permission_type = 16;
+pub const SAUCER_PERMISSION_TYPE_LOCATION: saucer_permission_type = 32;
+pub const SAUCER_PERMISSION_TYPE_CLIPBOARD: saucer_permission_type = 64;
+pub const SAUCER_PERMISSION_TYPE_NOTIFICATION: saucer_permission_type = 128;
 pub type saucer_permission_type = u8;
 unsafe extern "C" {
     pub fn saucer_permission_request_free(arg1: *mut saucer_permission_request);
@@ -340,10 +340,10 @@ pub struct saucer_scheme_request {
 pub struct saucer_scheme_response {
     _unused: [u8; 0],
 }
-pub const saucer_scheme_error_SAUCER_SCHEME_ERROR_NOT_FOUND: saucer_scheme_error = 404;
-pub const saucer_scheme_error_SAUCER_SCHEME_ERROR_INVALID: saucer_scheme_error = 400;
-pub const saucer_scheme_error_SAUCER_SCHEME_ERROR_DENIED: saucer_scheme_error = 401;
-pub const saucer_scheme_error_SAUCER_SCHEME_ERROR_FAILED: saucer_scheme_error = -1;
+pub const SAUCER_SCHEME_ERROR_NOT_FOUND: saucer_scheme_error = 404;
+pub const SAUCER_SCHEME_ERROR_INVALID: saucer_scheme_error = 400;
+pub const SAUCER_SCHEME_ERROR_DENIED: saucer_scheme_error = 401;
+pub const SAUCER_SCHEME_ERROR_FAILED: saucer_scheme_error = -1;
 pub type saucer_scheme_error = i16;
 unsafe extern "C" {
     pub fn saucer_scheme_response_free(arg1: *mut saucer_scheme_response);
@@ -410,26 +410,26 @@ pub type saucer_scheme_handler =
 pub struct saucer_window {
     _unused: [u8; 0],
 }
-pub const saucer_window_edge_SAUCER_WINDOW_EDGE_TOP: saucer_window_edge = 1;
-pub const saucer_window_edge_SAUCER_WINDOW_EDGE_BOTTOM: saucer_window_edge = 2;
-pub const saucer_window_edge_SAUCER_WINDOW_EDGE_LEFT: saucer_window_edge = 4;
-pub const saucer_window_edge_SAUCER_WINDOW_EDGE_RIGHT: saucer_window_edge = 8;
-pub const saucer_window_edge_SAUCER_WINDOW_EDGE_BOTTOM_LEFT: saucer_window_edge = 6;
-pub const saucer_window_edge_SAUCER_WINDOW_EDGE_BOTTOM_RIGHT: saucer_window_edge = 10;
-pub const saucer_window_edge_SAUCER_WINDOW_EDGE_TOP_LEFT: saucer_window_edge = 5;
-pub const saucer_window_edge_SAUCER_WINDOW_EDGE_TOP_RIGHT: saucer_window_edge = 9;
+pub const SAUCER_WINDOW_EDGE_TOP: saucer_window_edge = 1;
+pub const SAUCER_WINDOW_EDGE_BOTTOM: saucer_window_edge = 2;
+pub const SAUCER_WINDOW_EDGE_LEFT: saucer_window_edge = 4;
+pub const SAUCER_WINDOW_EDGE_RIGHT: saucer_window_edge = 8;
+pub const SAUCER_WINDOW_EDGE_BOTTOM_LEFT: saucer_window_edge = 6;
+pub const SAUCER_WINDOW_EDGE_BOTTOM_RIGHT: saucer_window_edge = 10;
+pub const SAUCER_WINDOW_EDGE_TOP_LEFT: saucer_window_edge = 5;
+pub const SAUCER_WINDOW_EDGE_TOP_RIGHT: saucer_window_edge = 9;
 pub type saucer_window_edge = u8;
-pub const saucer_window_decoration_SAUCER_WINDOW_DECORATION_NONE: saucer_window_decoration = 0;
-pub const saucer_window_decoration_SAUCER_WINDOW_DECORATION_PARTIAL: saucer_window_decoration = 1;
-pub const saucer_window_decoration_SAUCER_WINDOW_DECORATION_FULL: saucer_window_decoration = 2;
+pub const SAUCER_WINDOW_DECORATION_NONE: saucer_window_decoration = 0;
+pub const SAUCER_WINDOW_DECORATION_PARTIAL: saucer_window_decoration = 1;
+pub const SAUCER_WINDOW_DECORATION_FULL: saucer_window_decoration = 2;
 pub type saucer_window_decoration = u8;
-pub const saucer_window_event_SAUCER_WINDOW_EVENT_DECORATED: saucer_window_event = 0;
-pub const saucer_window_event_SAUCER_WINDOW_EVENT_MAXIMIZE: saucer_window_event = 1;
-pub const saucer_window_event_SAUCER_WINDOW_EVENT_MINIMIZE: saucer_window_event = 2;
-pub const saucer_window_event_SAUCER_WINDOW_EVENT_CLOSED: saucer_window_event = 3;
-pub const saucer_window_event_SAUCER_WINDOW_EVENT_RESIZE: saucer_window_event = 4;
-pub const saucer_window_event_SAUCER_WINDOW_EVENT_FOCUS: saucer_window_event = 5;
-pub const saucer_window_event_SAUCER_WINDOW_EVENT_CLOSE: saucer_window_event = 6;
+pub const SAUCER_WINDOW_EVENT_DECORATED: saucer_window_event = 0;
+pub const SAUCER_WINDOW_EVENT_MAXIMIZE: saucer_window_event = 1;
+pub const SAUCER_WINDOW_EVENT_MINIMIZE: saucer_window_event = 2;
+pub const SAUCER_WINDOW_EVENT_CLOSED: saucer_window_event = 3;
+pub const SAUCER_WINDOW_EVENT_RESIZE: saucer_window_event = 4;
+pub const SAUCER_WINDOW_EVENT_FOCUS: saucer_window_event = 5;
+pub const SAUCER_WINDOW_EVENT_CLOSE: saucer_window_event = 6;
 pub type saucer_window_event = ::std::os::raw::c_int;
 pub type saucer_window_event_decorated = ::std::option::Option<
     unsafe extern "C" fn(arg1: *mut saucer_window, arg2: saucer_window_decoration, arg3: *mut ::std::os::raw::c_void),
@@ -624,25 +624,25 @@ pub struct saucer_webview {
 pub struct saucer_webview_options {
     _unused: [u8; 0],
 }
-pub const saucer_state_SAUCER_STATE_STARTED: saucer_state = 0;
-pub const saucer_state_SAUCER_STATE_FINISHED: saucer_state = 1;
+pub const SAUCER_STATE_STARTED: saucer_state = 0;
+pub const SAUCER_STATE_FINISHED: saucer_state = 1;
 pub type saucer_state = ::std::os::raw::c_int;
-pub const saucer_status_SAUCER_STATE_HANDLED: saucer_status = 0;
-pub const saucer_status_SAUCER_STATE_UNHANDLED: saucer_status = 1;
+pub const SAUCER_STATE_HANDLED: saucer_status = 0;
+pub const SAUCER_STATE_UNHANDLED: saucer_status = 1;
 pub type saucer_status = ::std::os::raw::c_int;
-pub const saucer_script_time_SAUCER_SCRIPT_TIME_CREATION: saucer_script_time = 0;
-pub const saucer_script_time_SAUCER_SCRIPT_TIME_READY: saucer_script_time = 1;
+pub const SAUCER_SCRIPT_TIME_CREATION: saucer_script_time = 0;
+pub const SAUCER_SCRIPT_TIME_READY: saucer_script_time = 1;
 pub type saucer_script_time = ::std::os::raw::c_int;
-pub const saucer_webview_event_SAUCER_WEBVIEW_EVENT_PERMISSION: saucer_webview_event = 0;
-pub const saucer_webview_event_SAUCER_WEBVIEW_EVENT_FULLSCREEN: saucer_webview_event = 1;
-pub const saucer_webview_event_SAUCER_WEBVIEW_EVENT_DOM_READY: saucer_webview_event = 2;
-pub const saucer_webview_event_SAUCER_WEBVIEW_EVENT_NAVIGATED: saucer_webview_event = 3;
-pub const saucer_webview_event_SAUCER_WEBVIEW_EVENT_NAVIGATE: saucer_webview_event = 4;
-pub const saucer_webview_event_SAUCER_WEBVIEW_EVENT_MESSAGE: saucer_webview_event = 5;
-pub const saucer_webview_event_SAUCER_WEBVIEW_EVENT_REQUEST: saucer_webview_event = 6;
-pub const saucer_webview_event_SAUCER_WEBVIEW_EVENT_FAVICON: saucer_webview_event = 7;
-pub const saucer_webview_event_SAUCER_WEBVIEW_EVENT_TITLE: saucer_webview_event = 8;
-pub const saucer_webview_event_SAUCER_WEBVIEW_EVENT_LOAD: saucer_webview_event = 9;
+pub const SAUCER_WEBVIEW_EVENT_PERMISSION: saucer_webview_event = 0;
+pub const SAUCER_WEBVIEW_EVENT_FULLSCREEN: saucer_webview_event = 1;
+pub const SAUCER_WEBVIEW_EVENT_DOM_READY: saucer_webview_event = 2;
+pub const SAUCER_WEBVIEW_EVENT_NAVIGATED: saucer_webview_event = 3;
+pub const SAUCER_WEBVIEW_EVENT_NAVIGATE: saucer_webview_event = 4;
+pub const SAUCER_WEBVIEW_EVENT_MESSAGE: saucer_webview_event = 5;
+pub const SAUCER_WEBVIEW_EVENT_REQUEST: saucer_webview_event = 6;
+pub const SAUCER_WEBVIEW_EVENT_FAVICON: saucer_webview_event = 7;
+pub const SAUCER_WEBVIEW_EVENT_TITLE: saucer_webview_event = 8;
+pub const SAUCER_WEBVIEW_EVENT_LOAD: saucer_webview_event = 9;
 pub type saucer_webview_event = ::std::os::raw::c_int;
 #[doc = " @remark The passed permission requests lifetime ends when the event-callback finishes. To keep it around, it has\n to be explictly copied!"]
 pub type saucer_webview_event_permission = ::std::option::Option<
@@ -979,8 +979,8 @@ pub struct saucer_pdf {
 pub struct saucer_pdf_settings {
     _unused: [u8; 0],
 }
-pub const saucer_pdf_layout_SAUCER_PDF_LAYOUT_PORTRAIT: saucer_pdf_layout = 0;
-pub const saucer_pdf_layout_SAUCER_PDF_LAYOUT_LANDSCAPE: saucer_pdf_layout = 1;
+pub const SAUCER_PDF_LAYOUT_PORTRAIT: saucer_pdf_layout = 0;
+pub const SAUCER_PDF_LAYOUT_LANDSCAPE: saucer_pdf_layout = 1;
 pub type saucer_pdf_layout = u8;
 unsafe extern "C" {
     pub fn saucer_pdf_settings_free(arg1: *mut saucer_pdf_settings);

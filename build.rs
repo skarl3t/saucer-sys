@@ -26,6 +26,7 @@ fn main() {
             ])
             .parse_callbacks(Box::new(bindgen::CargoCallbacks::new()))
             .allowlist_item("saucer.*")
+            .prepend_enum_name(false) // Already included
             .generate()
             .expect("failed to generate bindings");
 
