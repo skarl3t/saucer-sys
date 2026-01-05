@@ -42,7 +42,11 @@ void pick(saucer_desktop *desktop, saucer_picker_options *opts, char *out, size_
     {
         for (const auto &path : *result)
         {
-            final.insert_range(final.end(), saucer::bindings::vectorize(path.string()));
+            final.insert_range(final.end(), saucer::bindings::vectorize(path.u8string()) | std::views::transform(
+                                                [](const char8_t c) {
+                                                    return static_cast<char>(c);
+                                                }) | std::ranges::to<std::vector<char> >()
+            );
             final.emplace_back('\0');
         }
 
@@ -53,7 +57,10 @@ void pick(saucer_desktop *desktop, saucer_picker_options *opts, char *out, size_
     }
     else
     {
-        final = saucer::bindings::vectorize(result.string());
+        final = saucer::bindings::vectorize(result->u8string()) | std::views::transform(
+                    [](const char8_t c) {
+                        return static_cast<char>(c);
+                    }) | std::ranges::to<std::vector<char> >();
     }
 
     saucer::bindings::return_range(final, out, size);
