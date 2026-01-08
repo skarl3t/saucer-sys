@@ -107,13 +107,14 @@ target_link_libraries(${PROJECT_NAME} PUBLIC saucer::saucer saucer::private)
 # | Setup Natives                                                                                         |
 # +-------------------------------------------------------------------------------------------------------+
 
-if (saucer_backend STREQUAL "WebKit")
-    enable_language(OBJCXX)
-    configure_file("src/native.cpp" "${CMAKE_CURRENT_SOURCE_DIR}/src/native.mm" COPYONLY)
-    target_sources(${PROJECT_NAME} PRIVATE "src/native.mm")
-else ()
-    target_sources(${PROJECT_NAME} PRIVATE "src/native.cpp")
-endif ()
+# Seems to break macOS builds, just disable them since we're not using native anyway
+# if (saucer_backend STREQUAL "WebKit")
+#     enable_language(OBJCXX)
+#     configure_file("src/native.cpp" "${CMAKE_CURRENT_SOURCE_DIR}/src/native.mm" COPYONLY)
+#     target_sources(${PROJECT_NAME} PRIVATE "src/native.mm")
+# else ()
+#     target_sources(${PROJECT_NAME} PRIVATE "src/native.cpp")
+# endif ()
 
 # +-------------------------------------------------------------------------------------------------------+
 # | Setup Modules                                                                                         |

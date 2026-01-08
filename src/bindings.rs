@@ -122,15 +122,6 @@ unsafe extern "C" {
     pub fn saucer_application_off_all(arg1: *mut saucer_application, arg2: saucer_application_event);
 }
 unsafe extern "C" {
-    #[doc = " @brief Allows to access the stable natives of saucer::application.\n @param idx The index of the member to return, e.g. `0` to access the `AdwApplication *` of the webkitgtk natives.\n @param result A pointer to a buffer into which the member will be extracted.\n @param size The size of the buffer.\n @note To use this function, call it first with \\param{result} being `nullptr`, and \\param{size} pointing to a\n variable that will receive the required buffer size. Then call it again with \\param{result} pointing to a buffer\n with sufficient size. Leave \\param{size} unchanged in the second invocation."]
-    pub fn saucer_application_native(
-        arg1: *mut saucer_application,
-        idx: usize,
-        result: *mut ::std::os::raw::c_void,
-        size: *mut usize,
-    );
-}
-unsafe extern "C" {
     #[doc = " @note The returned string does not need to be free'd."]
     pub fn saucer_version() -> *const ::std::os::raw::c_char;
 }
@@ -203,10 +194,6 @@ unsafe extern "C" {
 unsafe extern "C" {
     pub fn saucer_icon_new_from_stash(arg1: *mut saucer_stash, error: *mut ::std::os::raw::c_int) -> *mut saucer_icon;
 }
-unsafe extern "C" {
-    #[doc = " @note Please refer to the documentation in `application.h` on how to use this function."]
-    pub fn saucer_icon_native(arg1: *mut saucer_icon, arg2: usize, arg3: *mut ::std::os::raw::c_void, arg4: *mut usize);
-}
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct saucer_url {
@@ -263,10 +250,6 @@ unsafe extern "C" {
     #[doc = " @note The url might not contain a password. If this is the case, \\param{size} will be set to 0."]
     pub fn saucer_url_password(arg1: *mut saucer_url, arg2: *mut ::std::os::raw::c_char, arg3: *mut usize);
 }
-unsafe extern "C" {
-    #[doc = " @note Please refer to the documentation in `application.h` on how to use this function."]
-    pub fn saucer_url_native(arg1: *mut saucer_url, arg2: usize, arg3: *mut ::std::os::raw::c_void, arg4: *mut usize);
-}
 #[doc = " @remark A navigation cannot be copied."]
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -315,15 +298,6 @@ unsafe extern "C" {
 }
 unsafe extern "C" {
     pub fn saucer_permission_request_accept(arg1: *mut saucer_permission_request, arg2: bool);
-}
-unsafe extern "C" {
-    #[doc = " @note Please refer to the documentation in `application.h` on how to use this function."]
-    pub fn saucer_permission_request_native(
-        arg1: *mut saucer_permission_request,
-        arg2: usize,
-        arg3: *mut ::std::os::raw::c_void,
-        arg4: *mut usize,
-    );
 }
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -610,15 +584,6 @@ unsafe extern "C" {
 unsafe extern "C" {
     pub fn saucer_window_off_all(arg1: *mut saucer_window, arg2: saucer_window_event);
 }
-unsafe extern "C" {
-    #[doc = " @note Please refer to the documentation in `application.h` on how to use this function."]
-    pub fn saucer_window_native(
-        arg1: *mut saucer_window,
-        arg2: usize,
-        arg3: *mut ::std::os::raw::c_void,
-        arg4: *mut usize,
-    );
-}
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct saucer_webview {
@@ -886,15 +851,6 @@ unsafe extern "C" {
 }
 unsafe extern "C" {
     pub fn saucer_webview_register_scheme(arg1: *const ::std::os::raw::c_char);
-}
-unsafe extern "C" {
-    #[doc = " @note Please refer to the documentation in `application.h` on how to use this function."]
-    pub fn saucer_webview_native(
-        arg1: *mut saucer_webview,
-        arg2: usize,
-        arg3: *mut ::std::os::raw::c_void,
-        arg4: *mut usize,
-    );
 }
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
