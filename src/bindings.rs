@@ -403,8 +403,13 @@ unsafe extern "C" {
 unsafe extern "C" {
     pub fn saucer_scheme_executor_accept(arg1: *mut saucer_scheme_executor, arg2: *mut saucer_scheme_response);
 }
-pub type saucer_scheme_handler =
-    ::std::option::Option<unsafe extern "C" fn(arg1: *mut saucer_scheme_request, arg2: *mut saucer_scheme_executor)>;
+pub type saucer_scheme_handler = ::std::option::Option<
+    unsafe extern "C" fn(
+        arg1: *mut saucer_scheme_request,
+        arg2: *mut saucer_scheme_executor,
+        arg3: *mut ::std::os::raw::c_void,
+    ),
+>;
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct saucer_window {
@@ -850,6 +855,7 @@ unsafe extern "C" {
         arg1: *mut saucer_webview,
         arg2: *const ::std::os::raw::c_char,
         arg3: saucer_scheme_handler,
+        arg4: *mut ::std::os::raw::c_void,
     );
 }
 unsafe extern "C" {

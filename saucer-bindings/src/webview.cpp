@@ -311,11 +311,11 @@ extern "C"
         (*webview)->uninject(id);
     }
 
-    void saucer_webview_handle_scheme(saucer_webview *webview, const char *scheme, saucer_scheme_handler handler)
-    {
+    void saucer_webview_handle_scheme(saucer_webview *webview, const char *scheme, saucer_scheme_handler handler,
+                                      void *data) {
         (*webview)->handle_scheme(
-            scheme, [handler](saucer::scheme::request request, saucer::scheme::executor exec)
-            { handler(saucer_scheme_request{std::move(request)}, saucer_scheme_executor{std::move(exec)}); });
+            scheme, [handler, data](saucer::scheme::request request, saucer::scheme::executor exec) {
+                handler(saucer_scheme_request{std::move(request)}, saucer_scheme_executor{std::move(exec)}, data); });
     }
 
     void saucer_webview_remove_scheme(saucer_webview *webview, const char *scheme)
