@@ -132,8 +132,8 @@ extern "C"
         pick<type::files>(desktop, options, files, size, error);
     }
 
-    void saucer_desktop_pick_save(saucer_desktop *desktop, saucer_picker_options *options, char *location, size_t *size,
-                                  int *error)
+    void saucer_picker_save(saucer_desktop *desktop, saucer_picker_options *options, char *location, size_t *size,
+                            int *error)
     {
         pick<type::save>(desktop, options, location, size, error);
     }
