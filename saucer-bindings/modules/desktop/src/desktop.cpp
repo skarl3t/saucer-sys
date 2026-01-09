@@ -36,17 +36,12 @@ void pick(saucer_desktop *desktop, saucer_picker_options *opts, char *out, size_
         return;
     }
 
-    auto final = std::vector<char>{};
+    auto final = std::vector<char8_t>{};
 
-    if constexpr (std::ranges::range<result_t>)
-    {
-        for (const auto &path : *result)
-        {
-            final.insert_range(final.end(), saucer::bindings::vectorize(path.u8string()) | std::views::transform(
-                                                [](const char8_t c) {
-                                                    return static_cast<char>(c);
-                                                }) | std::ranges::to<std::vector<char> >()
-            );
+    // The original impl seems to have problem, it splits the path apart
+    if constexpr (std::is_same_v<std::vector<std::filesystem::path>, result_t>) {
+        for (const auto &path: *result) {
+            final.insert_range(final.end(), saucer::bindings::vectorize(path.u8string()));
             final.emplace_back('\0');
         }
 
@@ -55,12 +50,9 @@ void pick(saucer_desktop *desktop, saucer_picker_options *opts, char *out, size_
             final.pop_back();
         }
     }
-    else
-    {
-        final = saucer::bindings::vectorize(result->u8string()) | std::views::transform(
-                    [](const char8_t c) {
-                        return static_cast<char>(c);
-                    }) | std::ranges::to<std::vector<char> >();
+
+    if constexpr (std::is_same_v<std::filesystem::path, result_t>) {
+        final = saucer::bindings::vectorize(result->u8string());
     }
 
     saucer::bindings::return_range(final, out, size);
