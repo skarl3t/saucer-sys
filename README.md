@@ -20,12 +20,12 @@ Several features can be used to customize the build:
 
 - `shared-lib`: Build a shared library.
 
-  > [!WARNING]
-  >
-  > The produced shared libraries are put inside the build directory of this crate, which is (normally) inaccessible
-  > from binary crates that depends on it. This crate points the env `SAUCERS_OUT_DIR` to the output directory, thus one
-  > may copy the shared libraries as needed. However, it's generally not a good idea to enable dynamic linking for this
-  > crate.
+> [!WARNING]
+>
+> The produced shared libraries are put inside the build directory of this crate, which is (normally) inaccessible
+> from binary crates that depends on it. This crate points the env `SAUCERS_OUT_DIR` to the output directory, thus one
+> may copy the shared libraries as needed. However, it's generally not a good idea to enable dynamic linking for this
+> crate.
 
 ## Build Performance
 
@@ -49,9 +49,7 @@ however, would increase the binary size slightly. LTO can be used to reduce such
    clang -v     # clang version 21.1.8
    ```
 
-   > [!NOTE]
-   >
-   > On Windows, `clang-cl` is required to link with the MSVC target.
+   `clang-cl` is also needed if building on Windows.
 
 2. Instruct CMake to use `clang` as the compiler. This crate provides several env variables that can be used for this
    purpose, configurable in `.cargo/config.toml`:
