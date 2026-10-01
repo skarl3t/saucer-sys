@@ -23,9 +23,9 @@ set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 # +-------------------------------------------------------------------------------------------------------+
 
 if (saucers_static)
-    add_library(${PROJECT_NAME} STATIC)
+  add_library(${PROJECT_NAME} STATIC)
 else ()
-    add_library(${PROJECT_NAME} SHARED)
+  add_library(${PROJECT_NAME} SHARED)
 endif ()
 
 
@@ -35,11 +35,11 @@ target_compile_features(${PROJECT_NAME} PRIVATE cxx_std_23)
 set_target_properties(${PROJECT_NAME} PROPERTIES CXX_STANDARD 23 CXX_EXTENSIONS OFF CXX_STANDARD_REQUIRED ON)
 
 if (PROJECT_IS_TOP_LEVEL AND NOT MSVC AND NOT CMAKE_CXX_SIMULATE_ID MATCHES "MSVC")
-    target_compile_options(${PROJECT_NAME} PRIVATE -Wall -Wextra -Wpedantic -Werror -pedantic -pedantic-errors -Wfatal-errors)
+  target_compile_options(${PROJECT_NAME} PRIVATE -Wall -Wextra -Wpedantic -Werror -pedantic -pedantic-errors -Wfatal-errors)
 endif ()
 
 if (NOT MSVC)
-    target_compile_options(${PROJECT_NAME} PRIVATE -Wno-unknown-warning-option -Wno-missing-field-initializers -Wno-cast-function-type)
+  target_compile_options(${PROJECT_NAME} PRIVATE -Wno-unknown-warning-option -Wno-missing-field-initializers -Wno-cast-function-type)
 endif ()
 
 # +-------------------------------------------------------------------------------------------------------+
@@ -123,19 +123,19 @@ target_link_libraries(${PROJECT_NAME} PUBLIC saucer::saucer saucer::private)
 include("cmake/module.cmake")
 
 if (saucer_desktop)
-    add_subdirectory("modules/desktop")
+  add_subdirectory("modules/desktop")
 endif ()
 
 if (saucer_pdf)
-    add_subdirectory("modules/pdf")
+  add_subdirectory("modules/pdf")
 endif ()
 
 if (saucer_loop)
-    add_subdirectory("modules/loop")
+  add_subdirectory("modules/loop")
 endif ()
 
 install(
-        TARGETS ${PROJECT_NAME} saucer saucer-desktop saucer-pdf saucer-bindings-desktop saucer-bindings-pdf coco
+        TARGETS ${PROJECT_NAME} saucer saucer-desktop saucer-pdf saucer-loop saucer-bindings-desktop saucer-bindings-pdf saucer-bindings-loop coco
         ARCHIVE DESTINATION "."
         LIBRARY DESTINATION "."
         RUNTIME DESTINATION "."

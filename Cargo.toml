@@ -6,7 +6,7 @@ edition = "2024"
 license = "MIT"
 
 [build-dependencies]
-bindgen = "0.72.1"
+bindgen = "0.73.2"
 cmake = "0.1.57"
 pkg-config = "0.3.32"
 build-target = "0.8.0"

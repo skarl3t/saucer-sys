@@ -22,6 +22,7 @@ fn main() {
     let mut make = cmake::Config::new("saucer-bindings");
 
     make.define("saucers_static", if build_shared_lib { "OFF" } else { "ON" });
+    make.define("saucer_loop", "ON");
 
     if let Some(g) = get_target_env("SAUCERS_CMAKE_GENERATOR") {
         make.generator(g);
@@ -58,7 +59,12 @@ fn main() {
     let mut frameworks = Vec::new();
 
     if build_shared_lib {
-        shared_libs.extend(["saucer-bindings", "saucer-bindings-desktop", "saucer-bindings-pdf"]);
+        shared_libs.extend([
+            "saucer-bindings",
+            "saucer-bindings-desktop",
+            "saucer-bindings-pdf",
+            "saucer-bindings-loop",
+        ]);
     } else {
         static_libs.extend([
             "saucer",
@@ -67,6 +73,8 @@ fn main() {
             "saucer-bindings-desktop",
             "saucer-pdf",
             "saucer-bindings-pdf",
+            "saucer-loop",
+            "saucer-bindings-loop",
             "coco",
         ]);
 
@@ -153,6 +161,7 @@ fn main() {
                 "-I./saucer-bindings/include/saucer", // Looks like the modules won't use a prefix
                 "-I./saucer-bindings/modules/desktop/include",
                 "-I./saucer-bindings/modules/pdf/include",
+                "-I./saucer-bindings/modules/loop/include",
             ])
             .parse_callbacks(Box::new(bindgen::CargoCallbacks::new()))
             .allowlist_item("saucer.*")
