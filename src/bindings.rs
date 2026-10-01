@@ -965,3 +965,23 @@ unsafe extern "C" {
 unsafe extern "C" {
     pub fn saucer_pdf_save(arg1: *mut saucer_pdf, arg2: *mut saucer_pdf_settings);
 }
+#[repr(C)]
+#[derive(Debug)]
+pub struct saucer_loop {
+    _unused: [u8; 0],
+}
+unsafe extern "C" {
+    pub fn saucer_loop_free(arg1: *mut saucer_loop);
+}
+unsafe extern "C" {
+    pub fn saucer_loop_new(arg1: *mut saucer_application) -> *mut saucer_loop;
+}
+unsafe extern "C" {
+    pub fn saucer_loop_run(arg1: *mut saucer_loop);
+}
+unsafe extern "C" {
+    pub fn saucer_loop_iteration(arg1: *mut saucer_loop);
+}
+unsafe extern "C" {
+    pub fn saucer_loop_quit(arg1: *mut saucer_loop);
+}

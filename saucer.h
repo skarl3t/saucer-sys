@@ -10,3 +10,4 @@
 
 #include "saucer/desktop.h"
 #include "saucer/pdf.h"
+#include "saucer/loop.h"
